@@ -1,0 +1,125 @@
+@font-face {
+  font-family: AlloyInk;
+  src: url("AlloyInk.ttf");
+}
+
+h1 {
+  position: absolute;
+  font-family: AlloyInk;
+  font-size: 50px;
+  text-align: left;
+  margin-left: 265px;
+  color: red;
+}
+
+#computer-score {
+  position: absolute;
+  font-family: AlloyInk;
+  text-align: left;
+  left: -150px;
+  color: black;
+}
+
+#player-score {
+    position: absolute;
+    font-family: AlloyInk;
+    text-align: left;
+    left: 800px;
+    color: black;
+  }
+
+  #round-count {
+    position: absolute;
+    font-family: AlloyInk;
+    color: white;
+    font-size: 35px;
+    text-align: left;
+    left: 525px;
+    top: 50px;
+    z-index: 9999;
+  }
+
+#computer-label {
+  position: absolute;
+  font-family: AlloyInk;
+  color: red;
+  left: 70px;
+}
+
+#player-label {
+  position: absolute;
+  font-family: AlloyInk;
+  color: red;
+  left: 965px;
+}
+
+#result-label {
+  position: absolute;
+  font-family: AlloyInk;
+  color: green;
+  font-size: 50px;
+  z-index: 9999;
+  text-align: center;
+  left: 450px;
+  top: 125px;
+  visibility: var(--visible);
+}
+
+#arena {
+  position: absolute;
+  left: auto;
+  right: auto;
+  top: 100px;
+  border: 2px solid grey;
+  width: 1200px;
+  height: 700px;
+}
+
+#mat {
+  position: absolute;
+  top: 0;
+  left: 240px;
+  height: 100%;
+}
+
+#left-rock {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  height: 25%;
+}
+
+#left-paper {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  height: 25%;
+}
+
+#left-scissors {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  height: 25%;
+}
+
+#right-rock {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  height: 25%;
+}
+
+#right-paper {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  height: 25%;
+}
+
+#right-scissors {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  height: 25%;
+}
