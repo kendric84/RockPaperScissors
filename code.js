@@ -11,74 +11,57 @@ const rightSelectedLeft = 650;
 let compueterScore = 0;
 let playerScore = 0;
 let roundCount = 1;
-let SelectedLeftGamePieceID;
-let SelectedRightGamePieceID;
 let SelectedLeftGamePiecePosition;
 let SelectedRightGamePiecePosition;
+let rightGamePieces = document.getElementsByClassName("right-game-pieces");
+let leftGamePieces = document.getElementsByClassName("left-game-pieces");
 
-function resetPieces() {
-  //Set starting position on left game pieces
-  document
-    .getElementById("result-label")
-    .style.setProperty("--visible", "hidden");
-
-  let leftGamePieces = document.getElementsByClassName("left-game-pieces");
-  for (let i = 0; i < leftGamePieces.length; i++) {
-    leftGamePieces[i].style.setProperty(
-      "--top",
-      StartingPositionTop + i * 240 + "px"
-    );
-    leftGamePieces[i].style.setProperty(
-      "--left",
-      leftStartingPositionLeft + "px"
-    );
-  }
-
-  //Add click event and set starting position on right game pieces
-  let rightGamePieces = document.getElementsByClassName("right-game-pieces");
-  for (let i = 0; i < rightGamePieces.length; i++) {
-    rightGamePieces[i].addEventListener("click", function () {
-      SelectedRightGamePiecePosition = i;
-      SelectedRightGamePieceID = rightGamePieces[i].id;
-      selectedRightPiece(SelectedRightGamePieceID);
-      selectedLeftPiece();
-      whoWon(SelectedLeftGamePiecePosition, SelectedRightGamePiecePosition);
-    });
-    rightGamePieces[i].style.setProperty(
-      "--top",
-      StartingPositionTop + i * 240 + "px"
-    );
-    rightGamePieces[i].style.setProperty(
-      "--left",
-      rightStartingPositionLeft + "px"
-    );
-  }
+//Set or resets the board
+function setPieces() {
   document.getElementById("result-label").style.setProperty("--visible", "hidden");
+  document.getElementById("results-overlay").style.setProperty("--zposition", 0);
+
+  //Set starting position on left game pieces
+  for (let i = 0; i < leftGamePieces.length; i++) {
+    leftGamePieces[i].style.setProperty("--top", StartingPositionTop + i * 240 + "px");
+    leftGamePieces[i].style.setProperty("--left", leftStartingPositionLeft + "px");
+  }
+
+  //Set starting position on right game pieces
+  for (let i = 0; i < rightGamePieces.length; i++) {
+    rightGamePieces[i].style.setProperty("--top", StartingPositionTop + i * 240 + "px");
+    rightGamePieces[i].style.setProperty("--left", rightStartingPositionLeft + "px");
+  }
 }
 
+//Create click event on right pieces
+for (let i = 0; i < rightGamePieces.length; i++) {
+  rightGamePieces[i].addEventListener("click", function () {
+    selectedRightPiece(rightGamePieces[i].id, i);
+  });
+}
+
+/*Position piece selected by player,
+call function for computer selection,
+call function to determine winner
+*/
+function selectedRightPiece(SelectedRightGamePieceID, SelectedRightGamePiecePosition) {
+  document.getElementById(SelectedRightGamePieceID).style.setProperty("--top", rightSelectedTop + "px");
+  document.getElementById(SelectedRightGamePieceID).style.setProperty("--left", rightSelectedLeft + "px");
+  selectedLeftPiece();
+  whoWon(SelectedLeftGamePiecePosition, SelectedRightGamePiecePosition);
+}
+
+//Randomly select computer piece and set position
 function selectedLeftPiece() {
-  let leftGamePieces = document.getElementsByClassName("left-game-pieces");
   let randomPiece = Math.floor(Math.random() * 3);
-  SelectedLeftGamePieceID = leftGamePieces[randomPiece].id;
+  let SelectedLeftGamePieceID = leftGamePieces[randomPiece].id;
   SelectedLeftGamePiecePosition = randomPiece;
-  document
-    .getElementById(SelectedLeftGamePieceID)
-    .style.setProperty("--top", leftSelectedTop + "px");
-  document
-    .getElementById(SelectedLeftGamePieceID)
-    .style.setProperty("--left", leftSelectedLeft + "px");
+  document.getElementById(SelectedLeftGamePieceID).style.setProperty("--top", leftSelectedTop + "px");
+  document.getElementById(SelectedLeftGamePieceID).style.setProperty("--left", leftSelectedLeft + "px");
 }
 
-function selectedRightPiece(SelectedRightGamePieceID) {
-  resetPieces();
-  document
-    .getElementById(SelectedRightGamePieceID)
-    .style.setProperty("--top", rightSelectedTop + "px");
-  document
-    .getElementById(SelectedRightGamePieceID)
-    .style.setProperty("--left", rightSelectedLeft + "px");
-}
-
+//Compare player peice to computer piece, determine winner, update board and counts
 function whoWon(leftPiece, rightPiece) {
   //Check for tie
   leftPiece == rightPiece
@@ -100,11 +83,18 @@ function whoWon(leftPiece, rightPiece) {
     : (document.getElementById("result-label").textContent =
         "Something is wrong... :(");
 
+  //Update counts and board with results      
   document.getElementById("result-label").style.setProperty("--visible", "visible");
   document.getElementById("computer-score").textContent = compueterScore;
   document.getElementById("player-score").textContent = playerScore;
   roundCount++;
   document.getElementById("round-count").textContent = "Round " + roundCount;
+  //Results overlay blocks user from clicking another piece until board is reset
+  document.getElementById("results-overlay").style.setProperty("--zposition", 9999);
+  document.getElementById("results-overlay").addEventListener("click", function () {
+      setPieces();
+    });
 }
 
-resetPieces();
+//Call initial setup of board
+setPieces();

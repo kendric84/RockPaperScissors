@@ -12,6 +12,33 @@ h1 {
   color: red;
 }
 
+#results-overlay {
+  position: absolute;
+  left: auto;
+  right: auto;
+  width: 1200px;
+  height: 700px;
+  border: 2px solid black;
+  z-index: var(--zposition);
+}
+
+#arena {
+  position: absolute;
+  left: auto;
+  right: auto;
+  top: 100px;
+  border: 2px solid grey;
+  width: 1200px;
+  height: 700px;
+}
+
+#mat {
+  position: absolute;
+  top: 0;
+  left: 240px;
+  height: 100%;
+}
+
 #computer-score {
   position: absolute;
   font-family: AlloyInk;
@@ -63,23 +90,6 @@ h1 {
   left: 450px;
   top: 125px;
   visibility: var(--visible);
-}
-
-#arena {
-  position: absolute;
-  left: auto;
-  right: auto;
-  top: 100px;
-  border: 2px solid grey;
-  width: 1200px;
-  height: 700px;
-}
-
-#mat {
-  position: absolute;
-  top: 0;
-  left: 240px;
-  height: 100%;
 }
 
 #left-rock {
