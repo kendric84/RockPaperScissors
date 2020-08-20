@@ -97,6 +97,8 @@ h1 {
   top: var(--top);
   left: var(--left);
   height: 25%;
+  content: var(--left-rock);
+  transform: var(--left-rock-rotate);
 }
 
 #left-paper {
@@ -104,6 +106,8 @@ h1 {
   top: var(--top);
   left: var(--left);
   height: 25%;
+  content: var(--left-paper);
+  transform: var(--left-paper-rotate);
 }
 
 #left-scissors {
@@ -111,6 +115,8 @@ h1 {
   top: var(--top);
   left: var(--left);
   height: 25%;
+  content: var(--left-scissors);
+  transform: var(--left-scissors-rotate);
 }
 
 #right-rock {
@@ -118,6 +124,8 @@ h1 {
   top: var(--top);
   left: var(--left);
   height: 25%;
+  content: var(--right-rock);
+  transform: var(--right-rock-rotate);
 }
 
 #right-paper {
@@ -125,6 +133,8 @@ h1 {
   top: var(--top);
   left: var(--left);
   height: 25%;
+  content: var(--right-paper);
+  transform: var(--right-paper-rotate);
 }
 
 #right-scissors {
@@ -132,4 +142,15 @@ h1 {
   top: var(--top);
   left: var(--left);
   height: 25%;
+  content: var(--right-scissors);
+  transform: var(--right-scissors-rotate);
+}
+
+#explosion {
+  position: absolute;
+  top: 250px;
+  left: 490px;
+  z-index: 9999;
+  height: 30%;
+  visibility: var(--visible);
 }
