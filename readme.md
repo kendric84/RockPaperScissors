@@ -4,7 +4,7 @@
 
 Download it [here](https://github.com/kendric84/RockPaperScissors)
 
-![App Screenshot](/Assets/RPS-SS.png)
+![App Screenshot](/Assets/Images/RPS-SS.png)
 
 ## Summary
 A fun Rock-Paper-Scissors game that will track the number of rounds played and keep your score agaist the computer.
