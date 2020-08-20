@@ -98,10 +98,10 @@ function whoWon(leftPiece, rightPiece) {
       leftPiece == 1 ? 
       (compueterScore++, 
         rightRock.style.setProperty('--right-rock', "url(/Assets/Images/sad-rock.webp"),
-        rightRock.style.setProperty('--right-rock-rotate', "rotate(180deg)")) : 
+        rightRock.style.setProperty('--right-rock-rotate', "rotate(90deg)")) : 
         (playerScore++,
         leftRock.style.setProperty('--left-rock', "url(/Assets/Images/sad-rock.webp"),
-        leftRock.style.setProperty('--left-rock-rotate', "rotate(180deg)"))) : 
+        leftRock.style.setProperty('--left-rock-rotate', "rotate(-90deg)"))) : 
     //Rock & scissors combo
     (leftPiece == 0 || rightPiece == 0) & (leftPiece == 2 || rightPiece == 2) ?
     ((resultsLabel.textContent = "Rock Wins!"),
@@ -118,10 +118,10 @@ function whoWon(leftPiece, rightPiece) {
       leftPiece == 2 ?
        (compueterScore++,
         rightPaper.style.setProperty('--right-paper', "url(/Assets/Images/sad-paper.webp)"),
-        (rightPaper.style.setProperty('--right-paper-rotate', "rotate(180deg)"))) :
+        (rightPaper.style.setProperty('--right-paper-rotate', "rotate(90deg)"))) :
        (playerScore++,
        leftPaper.style.setProperty('--left-paper', "url(/Assets/Images/sad-paper.webp)"),
-        leftPaper.style.setProperty('--left-paper-rotate', "rotate(180deg)"))) :
+        leftPaper.style.setProperty('--left-paper-rotate', "rotate(-90deg)"))) :
        (resultsLabel.textContent = "Something is wrong... :(");
 
   //Update counts and board with results      
